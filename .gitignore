@@ -1,0 +1,7 @@
+.DS_Store
+node_modules
+bower_components
+backend/config/variables.js
+backend/routes/*.js
+dist
+public
