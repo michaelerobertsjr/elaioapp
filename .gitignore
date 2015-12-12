@@ -5,3 +5,4 @@ backend/config/variables.js
 backend/routes/*.js
 dist
 public
+npm-debug.log
