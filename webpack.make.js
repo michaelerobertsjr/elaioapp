@@ -31,9 +31,11 @@ module.exports = function makeWebpackConfig (options) {
   if (TEST) {
     config.entry = {}
   } else {
-    config.entry = {
-      app: './app/app.js'
-    }
+    config.entry = [
+      'webpack/hot/dev-server',
+      'webpack-hot-middleware/client',
+      './app/app.js'
+    ]
   }
 
   /**
@@ -47,11 +49,11 @@ module.exports = function makeWebpackConfig (options) {
   } else {
     config.output = {
       // Absolute output directory
-      path: __dirname + '/dist',
+      path: __dirname + '/',
 
       // Output path from the view of the page
       // Uses webpack-dev-server in development
-      publicPath: BUILD ? '/' : 'http://localhost:8080/',
+      publicPath: BUILD ? '/' : 'http://localhost:1923/',
 
       // Filename for entry points
       // Only adds hash in build mode
