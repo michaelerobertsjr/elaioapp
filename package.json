@@ -16,20 +16,23 @@
     "test:live": "karma start --auto-watch --no-single-run",
     "start": "node app.js"
   },
-  "dependencies": {
-    "angular": "^1.3.15",
-    "angular-ui-router": "0.2.13",
-    "autoprefixer-core": "^6.0.1",
+  "devDependencies": {
+    "babel": "^6.3.13",
     "babel-core": "^5.0.8",
     "babel-loader": "^5.0.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babelify": "^7.2.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.14.1",
     "bootstrap": "^3.3.6",
+    "browserify": "^12.0.1",
     "connect-flash": "^0.1.1",
     "connect-livereload": "^0.5.4",
     "cookie-parser": "^1.4.0",
     "css-loader": "^0.9.1",
+    "del": "^2.2.0",
     "ejs": "^2.3.4",
+    "eslint": "^1.10.3",
     "exports-loader": "^0.6.2",
     "express": "^4.13.3",
     "express-session": "^1.12.1",
@@ -38,6 +41,8 @@
     "gulp": "^3.9.0",
     "gulp-bower": "0.0.10",
     "gulp-concat": "^2.5.2",
+    "gulp-connect": "^2.3.1",
+    "gulp-express": "^0.3.5",
     "gulp-inject": "^1.2.0",
     "gulp-less": "^3.0.3",
     "gulp-ngmin": "^0.3.0",
@@ -45,9 +50,6 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.1.1",
     "gulp-uglify": "^1.2.0",
-    "gulp-webpack": "^1.4.0",
-    "html-loader": "^0.2.3",
-    "html-webpack-plugin": "^1.7.0",
     "imports-loader": "^0.6.3",
     "json-loader": "0.5.1",
     "less-loader": "^2.2.0",
@@ -66,11 +68,6 @@
     "style-loader": "^0.9.0",
     "tiny-lr": "^0.1.7",
     "url-loader": "0.5.5",
-    "webpack": "^1.7.2",
-    "webpack-dev-server": "^1.7.0"
-  },
-  "devDependencies": {
-    "webpack-dev-middleware": "^1.4.0",
-    "webpack-hot-middleware": "^2.6.0"
+    "vinyl-source-stream": "^1.1.0"
   }
 }

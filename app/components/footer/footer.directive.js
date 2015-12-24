@@ -1,6 +1,6 @@
 export default function FooterMenu () {
   return {
     restrict: 'E',
-    template: require('./footer.html')
+    templateUrl: './components/footer/footer.html'
   }
 }

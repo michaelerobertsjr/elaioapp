@@ -21,7 +21,26 @@ var userSchema = mongoose.Schema({
       following    : [],
       followers    : []
     }
-});
+})
+
+function findUser (request, email, password, done) {
+  this.findOne({ 'user.email' :  email }, function(err, user) {
+    console.log(user)
+    console.log(err)
+    if (err)
+      return done(err)
+    if (!user)
+      return done(null, false, 'error')
+    if (!user.verifyPassword(password))
+      return done(null, false, 'error')
+    else
+      return done(null, user)
+  });
+}
+
+var User = {
+  findUser: findUser
+}
 
 
 userSchema.methods.create = function(username, email, password, done, user) {
@@ -86,14 +105,15 @@ userSchema.methods.save = function(response) {
 };
 
 userSchema.methods.createIfDoesNotExist = function(profile, done) {
-    this.findOne({ 'user.email' :  profile.emails[0].value }, function(err, user) {
-          if (err)  return done(err);
-          if (user) return done(null, user);
-          var password = '';
-          var email    = profile.email[0].user || '';
-          var username = profile.displayName;
-          User.create(username, email, password, done);
-    });
+  var User = mongoose.model('User')
+  User.findOne({ 'user.email' :  profile.emails[0].value }, function(err, user) {
+        if (err)  return done(err);
+        if (user) return done(null, user);
+        var password = '';
+        var email    = profile.email[0].user || '';
+        var username = profile.displayName;
+        User.create(username, email, password, done);
+  });
 };
 
 userSchema.methods.generateHash = function(password) {
@@ -102,31 +122,16 @@ userSchema.methods.generateHash = function(password) {
 
 userSchema.methods.verifyPassword = function(password) {
     return bcrypt.compareSync(password, this.user.password);
-};
-
-userSchema.methods.login = function(request, email, password, done) {
-  var User = this
-  process.nextTick(function() {
-    User.findUser(request, email, password, done)
-  });
 }
 
-userSchema.methods.findUser = function(request, email, password, done) {
-  var User = this
-  User.findOne({ 'user.email' :  email }, function(err, user) {
-    if (err)
-      return done(err)
-    if (!user)
-      return done(null, false, req.flash('error', 'no-user'))
-    if (!user.verifyPassword(password))
-      return done(null, false, req.flash('error', 'incorrect-user'))
-    else
-      return done(null, user);
-  });
+userSchema.methods.login = function (request, email, password, done) {
+  process.nextTick(function () {
+    User.findUser(request, email, password, done)
+  })
 }
 
 userSchema.methods.findUserIfNoRequest = function(request, email, password, done) {
-  var User = this
+  var User = mongoose.model('User')
   User.findOne({ 'user.email' :  email }, function(err, user) {
     if (err)
       return done(err)
@@ -138,7 +143,7 @@ userSchema.methods.findUserIfNoRequest = function(request, email, password, done
 }
 
 userSchema.methods.signup = function(request, email, password, done) {
-  var User = this
+  var User = mongoose.model('User')
   process.nextTick(function() {
     if (!request.user) {
       User.findUserIfNoRequest(request, email, password, done)

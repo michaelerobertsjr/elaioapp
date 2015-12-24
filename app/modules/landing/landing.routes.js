@@ -4,7 +4,7 @@ export default function routes ($stateProvider) {
   $stateProvider
     .state('landing', {
       url: '/',
-      template: require('./landing.html'),
+      templateUrl: './modules/landing/landing.html',
       controller: 'LandingController',
       controllerAs: 'landing',
       transclude: true
