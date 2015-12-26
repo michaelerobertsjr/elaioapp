@@ -7,6 +7,7 @@ export default function routes ($stateProvider) {
       templateUrl: './modules/landing/landing.html',
       controller: 'LandingController',
       controllerAs: 'landing',
+      bindToController: true,
       transclude: true
     })
 }

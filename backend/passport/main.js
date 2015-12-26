@@ -19,12 +19,13 @@ var GOOGLE_CALLBACK_URL = config.passport.google.GOOGLE_CALLBACK_URL
 var User = require('../models/User')
 
 module.exports = function (passport) {
-  var saveUser = function (req, accessToken, refreshToken, profile, done) {
+
+  var saveUser = function (request, accessToken, refreshToken, profile, done) {
     process.nextTick(function () {
-      if (!req.user) {
-        User.createIfDoesNotExist(User, profile, done)
+      if (!request.user) {
+        User.createIfDoesNotExist(User, request, profile, done)
       } else {
-        User.save(req.user)
+        User.save(request, request.body.email, request.body.password, done)
       }
     })
   }

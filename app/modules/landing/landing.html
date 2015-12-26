@@ -1,6 +1,5 @@
 <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
     <div class="container topnav">
-        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
@@ -12,7 +11,7 @@
         </div>
         <form action="/login" method="post" class="navbar-form navbar-right" role="login">
             <div class="form-group">
-                <input type="text" class="form-control" name="email" placeholder="Usuario">
+                <input type="text" class="form-control" name="email" placeholder="Email">
             </div>
             <div class="form-group">
                 <input type="password" class="form-control" name="password" placeholder="Contraseña">
@@ -35,6 +34,25 @@
                     <button type="button" class="btn btn-default">Entrar con Facebook</button>
                     <button type="button" class="btn btn-default">Entrar con Google</button>
                     </span>
+                    <section class="row signup-form">
+                        <section class="col-lg-12">
+                            <button type="button" ng-click="landing.showSignupForm()" class="btn btn-default">Crear una cuenta</button>
+                        </section>
+                        <section ng-show="landing.signup" class="col-md-6 col-md-offset-3">
+                            <form action="/signup" method="post" class="navbar-form" role="signup">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="username" placeholder="Nombre de usuario">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="email" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" name="password" placeholder="Contraseña">
+                                </div>
+                                <button type="submit" class="btn btn-default">Crear</button>
+                            </form>
+                        </section>
+                    </section>
                 </section>
             </section>
         </section>
