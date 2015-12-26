@@ -1,2 +1,5 @@
-<h1>Dashboard</h1>
-<footer-menu></footer-menu>
+<section id="wrapper" ng-app="app.dashboard">
+	<sidebar main="dashboard" title="Elaio" links="dashboard.links" target="wrapper" toggle="menu-toggle"></sidebar>
+    <ui-view></ui-view>
+    <footer-menu></footer-menu>
+</section>
