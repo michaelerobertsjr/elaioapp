@@ -6,3 +6,5 @@ backend/routes/*.js
 dist
 public
 npm-debug.log
+mappe.json
+/**/mappe.json
