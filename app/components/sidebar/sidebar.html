@@ -1,0 +1,12 @@
+<div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+            <a ui-sref="dashboard.main"><span><img src="{{sidebar.logo}}" class="navbar--logo"/></span> {{title}}</a>
+        </li>
+        <li ng-repeat="link in links">
+            <a ui-sref="{{link.href}}">
+                <icon name="{{link.name}}"></icon> {{link.text}}
+            </a>
+        </li>
+    </ul>
+</div>
