@@ -18,6 +18,14 @@ export default function routes ($stateProvider) {
       bindToController: true,
       transclude: true
     })
+    .state('dashboard.courses', {
+      url: '/courses',
+      templateUrl: 'modules/dashboard/courses/courses.html',
+      controller: 'CoursesController',
+      controllerAs: 'courses',
+      bindToController: true,
+      transclude: true
+    })
     .state('dashboard.main', {
       url: '/main',
       templateUrl: 'modules/dashboard/main/main.html',
