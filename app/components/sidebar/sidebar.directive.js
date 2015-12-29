@@ -7,11 +7,28 @@ export default function Sidebar () {
       target: '@',
       toggle: '@',
       title: '@',
-      main: '@',
-      links: '='
+      main: '@'
     },
     controller: function () {
       this.logo = '../assets/images/elaio.png'
+      this.links = [{
+        'text': 'Principal',
+        'href': 'dashboard.main',
+        'name': 'dashboard'
+      }, {
+        'text': 'Cursos',
+        'href': 'dashboard.courses',
+        'name': 'tasks'
+      }, {
+        'text': 'Certificados',
+        'href': '#',
+        'name': 'file-text-o'
+      }, {
+        'text': 'Perfil',
+        'href': 'dashboard.profile',
+        'name': 'user'
+      }
+      ]
     }
   }
 }

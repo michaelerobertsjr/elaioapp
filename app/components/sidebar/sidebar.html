@@ -3,7 +3,7 @@
         <li class="sidebar-brand">
             <a ui-sref="dashboard.main"><span><img src="{{sidebar.logo}}" class="navbar--logo"/></span> {{title}}</a>
         </li>
-        <li ng-repeat="link in links">
+        <li ng-repeat="link in sidebar.links">
             <a ui-sref="{{link.href}}">
                 <icon name="{{link.name}}"></icon> {{link.text}}
             </a>
