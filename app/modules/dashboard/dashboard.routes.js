@@ -1,6 +1,6 @@
-routes.$inject = ['$stateProvider']
+routes.$inject = ['$stateProvider', '$urlRouterProvider']
 
-export default function routes ($stateProvider) {
+export default function routes ($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('dashboard', {
       url: '/dashboard',
@@ -26,6 +26,14 @@ export default function routes ($stateProvider) {
       bindToController: true,
       transclude: true
     })
+    .state('dashboard.statements', {
+      url: '/statements',
+      templateUrl: 'modules/dashboard/statements/statements.html',
+      controller: 'StatementsController',
+      controllerAs: 'statements',
+      bindToController: true,
+      transclude: true
+    })
     .state('dashboard.main', {
       url: '/main',
       templateUrl: 'modules/dashboard/main/main.html',
@@ -34,4 +42,6 @@ export default function routes ($stateProvider) {
       bindToController: true,
       transclude: true
     })
+
+  $urlRouterProvider.otherwise('/dashboard')
 }
