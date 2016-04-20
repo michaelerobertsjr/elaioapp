@@ -2,13 +2,22 @@
     <section class="container-fluid">
 	    <section class="row">
 	        <section class="col-lg-12">
-	            <button class="btn btn-default" ng-click="dashboard.toggleSidebar()" id="menu-toggle"><i class="fa fa-bars"></i></button>  <span class="page--title">Cursos - Tenemos {{courses.courses.length}} cursos para ti.
+	            <button class="btn btn-default" ng-click="dashboard.toggleSidebar()" id="menu-toggle"><i class="fa fa-bars"></i></button>  <span class="page--title">Courses - We have {{courses.courses.length}} courses.
 	        </section>
 	    </section>
 	    <hr class="separator--primary">
 	   	<section class="row">
-	        <section class="col-lg-12">
-			<course-form><i class="fa fa-plus-circle"></i> Añadir curso</course-form>
+	        <section class="col-lg-6">
+				<section class="row">
+				    <div class="col-md-5">
+				   		<course-form class="form-control"><i class="fa fa-plus-circle"></i> Add course</course-form>
+				   	</div>
+				   	<form role="search" class="col-md-7">
+				        <div>
+				          <input type="text" class="form-control" placeholder="Search course...">
+				        </div>
+				    </form>
+			    </section>
 	        </section>
 	    </section>
 	</section>

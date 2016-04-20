@@ -7,13 +7,23 @@ export default class CoursesService {
     q = $q
 
     endpoint = {
-        courses: 'api/courses'
+        courses: 'api/courses',
+        saveCourse: 'api/course/save'
     }
   }
 
   getCourses () {
     let deferred = q.defer()
-    HTTP.get(endpoint.courses).then(function(result) {
+    HTTP.get(endpoint.courses).then(function (result) {
+        deferred.resolve(result.data)
+    })
+    return deferred.promise
+  }
+
+  saveCourse (course) {
+    let deferred = q.defer()
+    HTTP.post(endpoint.saveCourse, {'course': course}).then(function (result) {
+        console.log(result)
         deferred.resolve(result.data)
     })
     return deferred.promise
