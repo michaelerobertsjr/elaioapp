@@ -12,19 +12,27 @@ export default function Sidebar () {
     controller: function () {
       this.logo = '../assets/images/elaio.png'
       this.links = [{
-        'text': 'Principal',
+        'text': 'Dashboard',
         'href': 'dashboard.main',
         'name': 'dashboard'
       }, {
-        'text': 'Cursos',
-        'href': 'dashboard.courses',
+        'text': 'Statements',
+        'href': 'dashboard.statements',
         'name': 'tasks'
       }, {
-        'text': 'Certificados',
-        'href': '#',
+        'text': 'Students',
+        'href': 'dashboard.students',
+        'name': 'graduation-cap'
+      }, {
+        'text': 'Courses',
+        'href': 'dashboard.courses',
+        'name': 'book'
+      }, {
+        'text': 'Documentation',
+        'href': 'dashboard.docs',
         'name': 'file-text-o'
       }, {
-        'text': 'Perfil',
+        'text': 'Profile',
         'href': 'dashboard.profile',
         'name': 'user'
       }
