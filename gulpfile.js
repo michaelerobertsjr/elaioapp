@@ -18,6 +18,7 @@ var paths = {
     WATCH: [
       'app/app.js',
       'app/**/*.js',
+      'app/**/**/*.js',
       'app/**/*.scss',
       'app/**/*.html'],
     OUT: 'elaio.js',
@@ -130,6 +131,7 @@ gulp.task('default', [
                       'assets_scripts',
                       'assets_styles',
                       'assets_media',
+                      'build',
                       'run',
                       'views',
                       'watch'])
