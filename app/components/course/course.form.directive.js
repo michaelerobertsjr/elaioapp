@@ -1,4 +1,4 @@
-export default function CourseForm ($uibModal) {
+export default function CourseForm (CoursesService, $uibModal) {
   return {
     restrict: 'EA',
     transclude: true,
@@ -9,12 +9,14 @@ export default function CourseForm ($uibModal) {
     },
     controller: function () {
       var courseForm = this
+      var modalInstance = null
 
       courseForm.open = function () {
-        var modalInstance = $uibModal.open({
+        modalInstance = $uibModal.open({
           animation: true,
           templateUrl: './components/course/course.form.html',
-          // controller: 'ModalInstanceCtrl',
+          controller: 'CourseFormController',
+          controllerAs: 'courseForm',
           size: 'md',
           resolve: {
             items: function () {
@@ -29,4 +31,4 @@ export default function CourseForm ($uibModal) {
   }
 }
 
-CourseForm.$inject = ['$uibModal']
+CourseForm.$inject = ['CoursesService', '$uibModal']

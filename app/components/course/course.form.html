@@ -1,30 +1,29 @@
 <header class="modal-header">
-    <h3 class="modal-title">Curso</h3>
+    <h3 class="modal-title">Course</h3>
 </header>
-<section class="modal-body">
-    <section class="row">
-        <section class="col-lg-12">
-            <form role="form">
+<form role="form" ng-submit="courseForm.submit()">
+    <section class="modal-body">
+        <section class="row">
+            <section class="col-lg-12">
                 <section class="col-lg-12">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Nombre del curso" required>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Course name" ng-model="courseForm.course.name" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="email" name="platform" placeholder="Plataforma" required>
+                        <input type="text" class="form-control" id="email" name="platform" placeholder="Platform" ng-model="courseForm.course.platform" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="link" name="link" placeholder="Link" required>
+                        <input type="text" class="form-control" id="link" name="link" placeholder="Link" ng-model="courseForm.course.link" required>
                     </div>
                     <div class="form-group">
-                        <input type="number" class="form-control" id="precio" name="precio" placeholder="Precio" required>
+                        <input type="number" class="form-control" id="precio" name="precio" placeholder="Cost" ng-model="courseForm.course.price" required>
                     </div>
-                    <input type="submit" name="submit" id="submit" value="Guardar" class="btn btn-info pull-right">
                 </section>
-            </form>
+            </section>
         </section>
     </section>
-</section>
-<footer class="modal-footer">
-    <button class="btn btn-primary" type="button" ng-click="ok()">Guardar</button>
-    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancelar</button>
-</footer>
+    <footer class="modal-footer">
+        <button class="btn btn-primary" type="submit" name="submit" ng-submit="courseForm.submit()">Save</button>
+        <button class="btn btn-warning" type="button" ng-click="courseForm.close()">Cancel</button>
+    </footer>
+</form>
