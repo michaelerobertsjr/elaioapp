@@ -14,9 +14,9 @@
                 <input type="text" class="form-control" name="email" placeholder="Email">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" name="password" placeholder="Contraseña">
+                <input type="password" class="form-control" name="password" placeholder="Password">
             </div>
-            <button type="submit" class="btn btn-default">Entrar</button>
+            <button type="submit" class="btn btn-default">Enter</button>
         </form>
     </div>
 </nav>
@@ -27,29 +27,24 @@
                 <section class="intro-message">
                     <img src="{{landing.logo}}" class="logo"/>
                     <h1>elaio</h1>
-                    <h3>La plataforma que buscabas para organizar tus cursos a distancia</h3>
+                    <h3>We all learn in different ways. Discover your students' mental model.</h3>
                     <hr class="intro-divider">
-                    <span class="list-inline intro-social-buttons">
-                    <button type="button" class="btn btn-default">Entrar con Twitter</button>
-                    <button type="button" class="btn btn-default">Entrar con Facebook</button>
-                    <button type="button" class="btn btn-default">Entrar con Google</button>
-                    </span>
                     <section class="row signup-form">
                         <section class="col-lg-12">
-                            <button type="button" ng-click="landing.showSignupForm()" class="btn btn-default">Crear una cuenta</button>
+                            <button type="button" ng-click="landing.showSignupForm()" class="btn btn-default">Try it FREE</button>
                         </section>
                         <section ng-show="landing.signup" class="col-md-6 col-md-offset-3">
                             <form action="/signup" method="post" class="navbar-form" role="signup">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="username" placeholder="Nombre de usuario">
+                                    <input type="text" class="form-control" name="username" placeholder="Username">
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="email" placeholder="Email">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" name="password" placeholder="Contraseña">
+                                    <input type="password" class="form-control" name="password" placeholder="Password">
                                 </div>
-                                <button type="submit" class="btn btn-default">Crear</button>
+                                <button type="submit" class="btn btn-default">Sign up</button>
                             </form>
                         </section>
                     </section>
@@ -58,56 +53,22 @@
         </section>
     </section>
 </header>
-
-<section class="content-section-a">
-    <section class="container">
-        <section class="row">
-            <article class="col-lg-5 col-sm-6">
-                <hr class="section-heading-spacer">
-                <div class="clearfix"></div>
-                <h2 class="section-heading">Encuentra el curso que estás buscando</h2>
-                <p class="lead">Cientos de cursos en español. No esperes más y súmate a la educación a distancia.</p>
-            </article>
-            <aside class="col-lg-5 col-lg-offset-2 col-sm-6">
-                <div class="landing-logo-image">
-                    <i class="fa fa-search img-responsive"></i>
-                </div>                
-            </aside>
-        </section>
-    </section>
-</section>
-
-<section class="content-section-b">
-    <section class="container">
-        <section class="row">
-            <article class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
-                <hr class="section-heading-spacer">
-                <div class="clearfix"></div>
-                <h2 class="section-heading">Cursos oficiales</h2>
-                <p class="lead">Cursos, grados, másteres universitarios y mucho más. La educación online es educación de calidad.</p>
-            </article>
-            <aside class="col-lg-5 col-sm-pull-6  col-sm-6">
-                <div class="landing-logo-image">
-                    <i class="fa fa-graduation-cap img-responsive"></i>
-                </div>                
-            </aside>
-        </section>
-    </section>
-</section>
-<section class="content-section-a">
-    <section class="container">
-        <section class="row">
-            <article class="col-lg-5 col-sm-6">
-                <hr class="section-heading-spacer">
-                <div class="clearfix"></div>
-                <h2 class="section-heading">Busca, encuentra y comparte recursos</h2>
-                <p class="lead">Comparte tus materiales de estudio con otros estudiantes. Pregunta a otros usuarios acerca del curso que quieres estudiar. Con amigos, la experiencia educativa mejora.</p>
-            </article>
-            <aside class="col-lg-5 col-lg-offset-2 col-sm-6">
-                <div class="landing-logo-image">
-                    <i class="fa fa-book img-responsive"></i>
-                </div>
-            </aside>
+<section class="main--view">
+    <section class="content-section-b">
+        <section class="container">
+            <section class="row">
+                <article class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Know your students</h2>
+                    <p class="lead">Every student has its own mental model. Every interaction with your system can help you to know how your students want to learn.</p>
+                </article>
+                <aside class="col-lg-5 col-sm-pull-6  col-sm-6">
+                    <div class="landing-logo-image">
+                        <i class="fa fa-graduation-cap img-responsive"></i>
+                    </div>                
+                </aside>
+            </section>
         </section>
     </section>
 </section>
