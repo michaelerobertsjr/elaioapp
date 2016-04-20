@@ -1,0 +1,25 @@
+<section id="page-content-wrapper">   
+    <section class="container-fluid">
+	    <section class="row">
+	        <section class="col-lg-12">
+	            <button class="btn btn-default" ng-click="dashboard.toggleSidebar()" id="menu-toggle"><i class="fa fa-bars"></i></button>  <span class="page--title">Statements
+	        </section>
+	    </section>
+	    <hr class="separator--primary">
+	   	<section class="row">
+	        <section class="col-lg-12">
+				<section class="row">
+				    <div class="col-md-6">
+				    <!-- TODO: Upload Statements -->
+    				<input type="file" uploadfile="statementsFile(fileContent)"/>
+    				<button ng-click="statements.uploadFile()">Save Statements</button>
+				    <!-- TODO: Statement Form -->
+				   	</div>
+			    </section>
+	        </section>
+	        <section class="col-lg-12">
+	        	<section>{{statements.content}}</section>
+	        </section>
+	    </section>
+	</section>
+</section>
