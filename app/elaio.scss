@@ -1,13 +1,14 @@
 @import 'assets/fonts/font-awesome/scss/font-awesome';
 
 @import 'modules/themes/variables';
-@import 'modules/themes/darkly/mixins';
-@import 'modules/themes/darkly/variables';
-@import 'modules/themes/darkly/bootswatch';
+@import 'modules/themes/custom/mixins';
+@import 'modules/themes/custom/variables';
+@import 'modules/themes/custom/custom';
 @import 'modules/landing/landing';
 @import 'modules/dashboard/dashboard';
 
 @import 'components/general/general';
 @import 'components/sidebar/sidebar';
 @import 'components/footer/footer';
+@import 'components/modal/modal';
 

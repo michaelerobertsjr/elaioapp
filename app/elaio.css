@@ -5,7 +5,6 @@
  */
 /* FONT PATH
  * -------------------------- */
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,500");
 @font-face {
   font-family: 'FontAwesome';
   src: url("./assets/fonts/font-awesome/fonts/fontawesome-webfont.eot?v=4.2.0");
@@ -1665,106 +1664,13 @@
 .fa-meanpath:before {
   content: ""; }
 
-.sandstone, .navbar .nav > li > a, .btn, .nav, .breadcrumb, .pagination, .pager, .dropdown-menu > li > a, .tooltip, .panel .panel-heading,
-.panel .panel-title, .panel .panel-footer {
-  font-size: 11px;
-  line-height: 22px;
-  font-weight: 500;
-  text-transform: uppercase; }
-
-.navbar-form input,
-.navbar-form .form-control {
-  border: none; }
-
 .btn {
-  border: none; }
-  .btn:hover {
-    border-color: transparent; }
-  .btn-lg {
-    line-height: 26px; }
-  .btn-default:hover {
-    background-color: #393a35; }
+  border: 1px solid #E6E6E6; }
 
-input,
-.form-control {
-  -webkit-box-shadow: none none none none;
-  -moz-box-shadow: none none none none;
-  box-shadow: none none none none; }
-  input:focus,
-  .form-control:focus {
-    border-color: #DFD7CA;
-    -webkit-box-shadow: none none none none;
-    -moz-box-shadow: none none none none;
-    box-shadow: none none none none; }
-
-.nav .open > a,
-.nav .open > a:hover,
-.nav .open > a:focus {
-  border-color: #DFD7CA; }
-
-.nav-tabs > li > a {
-  background-color: #F8F5F0;
-  border-color: #DFD7CA;
-  color: #98978B; }
-
-.nav-tabs > li.disabled > a:hover {
-  background-color: #F8F5F0; }
-
-.nav-pills a {
-  color: #98978B; }
-
-.nav-pills li > a {
-  border: 1px solid transparent; }
-
-.nav-pills li.active > a,
-.nav-pills li > a:hover {
-  border-color: #DFD7CA; }
-
-.nav-pills li.disabled > a {
-  border-color: transparent; }
-
-.breadcrumb {
-  border: 1px solid #DFD7CA; }
-  .breadcrumb a {
-    color: #98978B; }
-
-.pager li > a {
-  color: #98978B; }
-
-.alert a,
-.alert .alert-link {
-  color: #fff; }
-
-.progress {
-  border-radius: 10px;
-  background-color: #DFD7CA;
-  -webkit-box-shadow: none none none none;
-  -moz-box-shadow: none none none none;
-  box-shadow: none none none none; }
-  .progress-bar {
-    -webkit-box-shadow: none none none none;
-    -moz-box-shadow: none none none none;
-    box-shadow: none none none none; }
-
-.list-group-item {
-  padding: 16px 24px; }
-
-.well {
-  -webkit-box-shadow: none none none none;
-  -moz-box-shadow: none none none none;
-  box-shadow: none none none none; }
-
-.panel {
-  -webkit-box-shadow: none none none none;
-  -moz-box-shadow: none none none none;
-  box-shadow: none none none none; }
-  .panel .panel-heading,
-  .panel .panel-title {
-    color: #fff; }
-  .panel-default .panel-heading,
-  .panel-default .panel-title,
-  .panel-default .panel-footer {
-    color: #98978B; }
+.btn-primary {
+  background-color: #0EA045; }
+  .btn-primary:hover {
+    background-color: #085e28; }
 
 /*!
  * Start Bootstrap - Landing Page Bootstrap Theme (http://startbootstrap.com)
@@ -2166,6 +2072,9 @@ table.dataTable thead .sorting:after {
 .huge {
   font-size: 40px; }
 
+.main--view {
+  margin-bottom: 100px; }
+
 .page--title {
   font-size: 24px;
   display: inline-block;
@@ -2271,5 +2180,11 @@ table.dataTable thead .sorting:after {
   bottom: 0;
   width: 100%;
   padding: 10px;
-  margin-top: 150px;
   border-top: 1px solid #E6E6E6; }
+
+.modal-header {
+  background-color: #0EA045;
+  color: white; }
+
+.modal-content {
+  border-radius: 10px; }
