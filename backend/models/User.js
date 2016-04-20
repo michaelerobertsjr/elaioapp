@@ -1,24 +1,14 @@
-var mongoose = require('mongoose');
-var bcrypt   = require('bcrypt-nodejs');
+var mongoose = require('mongoose')
+var bcrypt   = require('bcrypt-nodejs')
 
 var userSchema = mongoose.Schema({
   name         : String,
-  familyName   : String,
   username     : String,
   email        : String,
   password     : String,
-  twitter      : String,
-  facebook     : String,
-  googlePlus   : String,
-  birthDate    : Date,
   firstDate    : Date,
   lastDate     : Date,
-  public       : {type: Boolean, default: false},
-  showContact  : {type: Boolean, default: false},
-  courses      : [],
-  preferences  : [],
-  following    : [],
-  followers    : []
+  courses      : []
 })
 
 var User = {}
@@ -83,19 +73,19 @@ userSchema.methods.update = function (request, response){
 	response.redirect('/user')
 }
 
-userSchema.methods.createIfDoesNotExist = function(User, request, profile, done) {
-  User.findOne({ 'email' :  profile.emails[0].value }, function(err, user) {
-    if (err)  return done(err)
+userSchema.methods.createIfDoesNotExist = function (User, request, profile, done) {
+  User.findOne({ 'email' : profile.emails[0].value }, function (err, user) {
+    if (err) return done(err)
     if (user) return done(null, user)
     var password = request.body.password || ''
-    var email    = request.body.email || ''
+    var email = request.body.email || ''
     var username = profile.displayName
     User.create(username, email, password)
   })
 }
 
 userSchema.methods.generateHash = function (password) {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
 }
 
 userSchema.methods.verifyPassword = function (user, password) {
@@ -108,8 +98,8 @@ userSchema.methods.login = function (request, email, password, done) {
   })
 }
 
-userSchema.methods.signup = function(request, email, password, done) {
-  process.nextTick(function() {
+userSchema.methods.signup = function (request, email, password, done) {
+  process.nextTick(function () {
     if (!request.user) {
       UserOperations.findUserIfNoRequest(request, email, password, done)
     } else {
