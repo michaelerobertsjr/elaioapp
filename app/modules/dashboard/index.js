@@ -11,7 +11,7 @@ import StatementsService from './statements/statements.service'
 
 import CourseFormDirective from '../../components/course/course.form.directive'
 import CourseFormController from '../../components/course/course.form.controller'
-import UploadfileDirective from '../../components/uploadFile/uploadfile.directive'
+import UploadFileDirective from '../../components/uploadFile/uploadfile.directive'
 import UploadfileService from '../../components/uploadFile/uploadfile.service'
 
 export default angular.module('app.dashboard', [uirouter, angularbootstrap])
@@ -21,7 +21,7 @@ export default angular.module('app.dashboard', [uirouter, angularbootstrap])
   .controller('StatementsController', StatementsController)
   .controller('CourseFormController', CourseFormController)
   .directive('courseForm', CourseFormDirective)
-  .directive('uploadfile', UploadfileDirective)
+  .directive('uploadFile', UploadFileDirective)
   .service('CoursesService', CoursesService)
   .service('StatementsService', StatementsService)
   .service('UploadfileService', UploadfileService)

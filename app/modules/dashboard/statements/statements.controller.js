@@ -8,25 +8,19 @@ export default class StatementsController extends DashboardController {
     super()
     statements = this
 
-    statements.uploadFile = function (fileContent) {
-      var file = $scope.statementsFile
+    statements.uploadFile = function () {
+      var file = $scope.fileContent
       var saveStatements = '/api/statements/save'
-      statements.content = fileContent
+      statements.content = file
       UploadfileService.uploadFileToURL(file, saveStatements)
     }
 
-    $scope.$watch('statementsFile', function (statementsFile) {
+    $scope.$watch('fileContent', function (statementsFile) {
       if (statementsFile) {
         reader.readAsText(statementsFile)
-        console.log(reader)
-        console.log(reader.result)
         statements.statementsFileContent = reader.result
       }
     })
-
-    statements.saveStatements = function () {
-
-    }
   }
 }
 

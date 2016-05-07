@@ -2,6 +2,8 @@ import angular from 'angular'
 
 let HTTP = null
 let q = null
+let reader = new FileReader()
+
 export default class UploadfileService {
   constructor ($http, $q) {
     HTTP = $http
