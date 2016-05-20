@@ -2,11 +2,12 @@ export default function UploadFile ($parse) {
   return {
     restrict: 'A',
     link: function (scope, element, attrs) {
-      var model = $parse(attrs.uploadFile)
-      var modelSetter = model.assign
+      var model, modelSetter
+
+      model = $parse(attrs.uploadFile)
+      modelSetter = model.assign
 
       element.bind('change', function () {
-        var reader = new FileReader();
         scope.$apply(function () {
           modelSetter(scope, element[0].files[0])
         })

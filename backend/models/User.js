@@ -2,13 +2,12 @@ var mongoose = require('mongoose')
 var bcrypt   = require('bcrypt-nodejs')
 
 var userSchema = mongoose.Schema({
-  name         : String,
-  username     : String,
-  email        : String,
-  password     : String,
+  username     : { type : String, required : true},
+  email        : { type : String, unique : true, required : true, dropDups: true },
+  password     : { type : String, required : true},
   firstDate    : Date,
   lastDate     : Date,
-  courses      : []
+  apikey       : String
 })
 
 var User = {}
@@ -32,6 +31,7 @@ UserOperations.create = function (request, email, password, done) {
   newUser.username  = request.body.username
   newUser.email     = email
   newUser.password  = newUser.generateHash(password)
+  newUser.apikey    = newUser.generateHash(password)
   newUser.firstDate = new Date()
   newUser.lastDate  = new Date()
   newUser.save(function (err) {
@@ -55,21 +55,17 @@ UserOperations.findUserIfNoRequest = function (request, email, password, done) {
 }
 
 userSchema.methods.update = function (request, response){
-  this.name        = request.body.name || this.user.name
-  this.familyName  = request.body.familyName || this.user.familyName
-  this.username    = request.body.username || this.user.username
-  this.birthDate   = request.body.birthDate || this.user.birthDate
-	this.showContact = request.body.showContact || this.user.showContact
-  this.courses     = request.body.courses || this.user.courses
-  this.preferences = request.body.preferences || this.user.preferences
-  this.public      = request.body.public || this.user.public
-  this.twitter     = request.body.public || this.user.public
-  this.facebook    = request.body.public || this.user.public
-  this.googlePlus  = request.body.public || this.user.public
-  this.following   = request.body.public || this.user.public
-  this.followers   = request.body.public || this.user.public
+  this.username = request.body.username || this.username
+  this.email    = request.body.email || this.email
 
-	this.user.save();
+  this.save(function (err) {
+    if (err) {
+      throw err
+    } else {
+      return done(null)
+    }
+ })
+
 	response.redirect('/user')
 }
 
@@ -77,8 +73,8 @@ userSchema.methods.createIfDoesNotExist = function (User, request, profile, done
   User.findOne({ 'email' : profile.emails[0].value }, function (err, user) {
     if (err) return done(err)
     if (user) return done(null, user)
-    var password = request.body.password || ''
-    var email = request.body.email || ''
+    var password = request.body.password
+    var email = request.body.email
     var username = profile.displayName
     User.create(username, email, password)
   })
@@ -106,6 +102,14 @@ userSchema.methods.signup = function (request, email, password, done) {
       UserOperations.create(request, email, password, done)
     }
   })
+}
+
+userSchema.methods.api = function (apikey, done) {
+    User.findOne({ apikey: apikey }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) { return done(null, false); }
+      return done(null, user);
+    });
 }
 
 User = mongoose.model('User', userSchema)

@@ -1,24 +1,25 @@
 import DashboardController from '../dashboard.controller'
 
-let statements
-let reader = new FileReader()
+let statements, reader, content
 
 export default class StatementsController extends DashboardController {
   constructor ($scope, statementsService, UploadfileService) {
     super()
     statements = this
+    reader = new FileReader()
 
-    statements.uploadFile = function () {
-      var file = $scope.fileContent
-      var saveStatements = '/api/statements/save'
-      statements.content = file
-      UploadfileService.uploadFileToURL(file, saveStatements)
+    reader.onload = function(){
+      statements.fileContent = JSON.stringify(JSON.parse(reader.result), null, 2);
     }
 
-    $scope.$watch('fileContent', function (statementsFile) {
-      if (statementsFile) {
-        reader.readAsText(statementsFile)
-        statements.statementsFileContent = reader.result
+    statements.uploadFile = function () {
+      statementsService.saveStatement(content)
+    }
+
+    $scope.$watch('fileContent', function (statement) {
+      if (statement) {
+        reader.readAsText(statement)
+        content = JSON.parse(reader.result)
       }
     })
   }

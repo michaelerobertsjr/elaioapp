@@ -1,13 +1,19 @@
-<section id="page-content-wrapper">     
+<section id="page-content-wrapper">
     <section class="container-fluid">
 	    <section class="row">
 	        <section class="col-lg-12">
 	        <span><button class="btn btn-default" ng-click="dashboard.toggleSidebar()" id="menu-toggle"><i class="fa fa-bars"></i></button></span>  <span class="page--title">Profile</span>
 	        </section>
 	    </section>
-	    <hr class="separator--primary">
+	    <hr class="separator--primary"/>
 	    <section class="row">
+        <section class="col-lg-6">
+          <h2>Your apikey is:</h2>
+          <pre>{{profile.currentUser.apikey}}</pre>
+        </section>
 	    	<section class="col-lg-12">
+          <h2>Update your profile:</h2>
+          <section class="row">
 		        <form role="form">
 		            <section class="col-lg-6">
 		                <div class="form-group">
@@ -25,6 +31,7 @@
 		                <input type="submit" name="submit" id="submit" value="Update" class="btn btn-info pull-right">
 		            </section>
 	        	</form>
+          </section>
 	        </section>
 	    </section>
 	    <hr>

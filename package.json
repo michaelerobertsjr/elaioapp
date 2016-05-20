@@ -72,6 +72,7 @@
   },
   "dependencies": {
     "brain": "^0.7.0",
+    "passport-localapikey": "0.0.3",
     "tincanjs": "^0.41.1"
   }
 }

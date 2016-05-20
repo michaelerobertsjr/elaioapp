@@ -34,12 +34,12 @@ var paths = {
     ENTRY_POINT: __dirname + '/app/app.js'
 }
 
-var assets = ['app/**/*.ttf', 
-              'app/**/*.woff', 
-              'app/**/*.eot', 
-              'app/**/*.png', 
-              'app/**/*.jpg', 
-              'app/**/*.svg', 
+var assets = ['app/**/*.ttf',
+              'app/**/*.woff',
+              'app/**/*.eot',
+              'app/**/*.png',
+              'app/**/*.jpg',
+              'app/**/*.svg',
               'app/assets/images/*.png'
             ]
 
@@ -49,7 +49,9 @@ var vendorCSS = [
 
 var vendorJS = [
     paths.BOWER + 'jquery/dist/jquery.js',
-    paths.BOWER + 'bootstrap/dist/js/bootstrap.js'
+    paths.BOWER + 'bootstrap/dist/js/bootstrap.js',
+    paths.BOWER + 'Chart.js/dist/Chart.js',
+    paths.BOWER + 'Chart.js/dist/Chart.bundle.js'
 ]
 
 gulp.task('styles', function () {

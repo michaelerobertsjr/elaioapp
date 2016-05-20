@@ -13,8 +13,8 @@ export default function routes ($stateProvider, $urlRouterProvider) {
     .state('dashboard.profile', {
       url: '/profile',
       templateUrl: 'modules/dashboard/profile/profile.html',
-      controller: 'DashboardController',
-      controllerAs: 'dashboard',
+      controller: 'ProfileController',
+      controllerAs: 'profile',
       bindToController: true,
       transclude: true
     })
@@ -31,6 +31,14 @@ export default function routes ($stateProvider, $urlRouterProvider) {
       templateUrl: 'modules/dashboard/statements/statements.html',
       controller: 'StatementsController',
       controllerAs: 'statements',
+      bindToController: true,
+      transclude: true
+    })
+    .state('dashboard.students', {
+      url: '/students',
+      templateUrl: 'modules/dashboard/students/students.html',
+      controller: 'StudentsController',
+      controllerAs: 'students',
       bindToController: true,
       transclude: true
     })

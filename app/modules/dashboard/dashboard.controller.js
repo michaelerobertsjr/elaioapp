@@ -4,7 +4,7 @@ export default class DashboardController {
     this.logo = '../../assets/images/elaio.png'
   }
 
-  	toggleSidebar () {
+  toggleSidebar () {
 		$('#wrapper').toggleClass('toggled');
 	}
 }

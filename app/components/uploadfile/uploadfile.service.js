@@ -10,21 +10,18 @@ export default class UploadfileService {
     q = $q
   }
 
-  uploadFileToURL (file, uploadUrl) {
+  uploadFileContent (content, uploadUrl) {
     var deferred = q.defer()
-    var formData = new FormData()
 
-    formData.append('file', file)
-
-    // TODO:
-    // HTTP.post(uploadUrl, formData, {
-    //   transformRequest: angular.identity,
-    //   headers: {'Content-Type': undefined}
-    // })
-    // .success(function () {
-    // })
-    // .error(function () {
-    // })
+    HTTP.post(uploadUrl, content, {
+      headers: {'Content-Type': "application/json"}
+    })
+    .success(function (message) {
+      console.log('success')
+    })
+    .error(function (error) {
+      console.log('error')
+    })
 
     return deferred.promise
   }

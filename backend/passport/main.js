@@ -1,4 +1,5 @@
 var LocalStrategy = require('passport-local').Strategy
+var LocalAPIKeyStrategy = require('passport-localapikey').Strategy
 var config = require('../config/variables')
 
 var FacebookStrategy = require('passport-facebook').Strategy
@@ -40,8 +41,9 @@ module.exports = function (passport) {
     })
   }
 
-  var loginStrategy = new LocalStrategy(config.passport.localStrategy, User.schema.methods.login)
+  var loginStrategy  = new LocalStrategy(config.passport.localStrategy, User.schema.methods.login)
   var signupStrategy = new LocalStrategy(config.passport.localStrategy, User.schema.methods.signup)
+  var localapikey    = new LocalAPIKeyStrategy(User.schema.methods.api)
 
   var facebookStrategy = new FacebookStrategy({
     clientID: FACEBOOK_APP_ID,
@@ -68,6 +70,8 @@ module.exports = function (passport) {
   // Strategies
   passport.use('login', loginStrategy)
   passport.use('signup', signupStrategy)
+  passport.use('localapikey', localapikey)
+
   passport.use(facebookStrategy, saveUser)
   passport.use(googleStrategy, saveUser)
   passport.use(twitterStrategy, saveUser)

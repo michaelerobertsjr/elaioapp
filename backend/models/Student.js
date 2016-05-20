@@ -1,83 +1,77 @@
 var mongoose = require('mongoose')
-var brain = require('brain')
+var brain =    require('brain')
+var url =      require('../config/variables').url
 
-var studentSchema = mongoose.Schema({
-  name: String,
-  gender: String,
-  age: Number,
+var studentStructure, studentSchema;
+
+studentStructure = {
+  name:      { type : String, required : true},
+  email:     { type : String, required : true, unique : true, dropDups: true },
+  gender:    { type : String, required : true},
+
   /* ************************ Learning Style (Kolb) ************************ */
   learningStyle: {
     /* AE: Active Experimentation: Doing */
-    entertainer: Number,
-    improviser: Number,
-    discoverer: Number,
-    risky: Number,
-    spontaneous: Number,
+    entertainer: { type: Number, default: 0 },
+    improviser:  { type: Number, default: 0 },
+    discoverer:  { type: Number, default: 0 },
+    risky:       { type: Number, default: 0 },
+    spontaneous: { type: Number, default: 0 },
     /* RO: Reflexive  Observation: Watching */
-    prudent: Number,
-    conscientious: Number,
-    receptive: Number,
-    analytical: Number,
-    exhaustive: Number,
+    prudent:       { type: Number, default: 0 },
+    conscientious: { type: Number, default: 0 },
+    receptive:     { type: Number, default: 0 },
+    analytical:    { type: Number, default: 0 },
+    exhaustive:    { type: Number, default: 0 },
     /* AC: Abstract Conceptualisation: Thinking */
-    methodical: Number,
-    logical: Number,
-    objective: Number,
-    critical: Number,
-    organized: Number,
+    methodical: { type: Number, default: 0 },
+    logical:    { type: Number, default: 0 },
+    objective:  { type: Number, default: 0 },
+    critical:   { type: Number, default: 0 },
+    organized:  { type: Number, default: 0 },
     /* CE: Concrete Experience: Feeling */
-    experimental: Number,
-    practical: Number,
-    direct: Number,
-    effective: Number,
-    realistic: Number
+    experimental: { type: Number, default: 0 },
+    practical:    { type: Number, default: 0 },
+    direct:       { type: Number, default: 0 },
+    effective:    { type: Number, default: 0 },
+    realistic:    { type: Number, default: 0 }
   },
-  'ingelligenceType': { // Howard Gardner
-    linguistic: Number,
-    logicalMathematical: Number,
-    spatial: Number,
-    musical: Number,
-    bodylyKinesthetic: Number,
-    intrapersonal: Number,
-    interpersonal: Number,
-    naturalist: Number
+  intelligenceType: { // Howard Gardner
+    linguistic:          { type: Number, default: 0 },
+    logicalMathematical: { type: Number, default: 0 },
+    spatial:             { type: Number, default: 0 },
+    musical:             { type: Number, default: 0 },
+    bodylyKinesthetic:   { type: Number, default: 0 },
+    intrapersonal:       { type: Number, default: 0 },
+    interpersonal:       { type: Number, default: 0 },
+    naturalist:          { type: Number, default: 0 }
   },
-  'personality': {
-    pA: Number,
-    pB: Number,
-    pAB: Number
+  personality: {
+    pA: { type: Number, default: 0 },
+    pB: { type: Number, default: 0 },
+    pAB:  { type: Number, default: 0 }
   },
-  'academicData': {
-    achievements: Number,
-    materials: Number,
-    activities: Number,
-    time: Number
+  academicData: {
+    achievements: { type: Number, default: 0 },
+    materials: { type: Number, default: 0 },
+    activities: { type: Number, default: 0 },
+    time: { type: Number, default: 0 }
   },
-  'mood': {
-    positive: Number,
-    negative: Number,
-    neutral: Number
+  mood: {
+    positive: { type: Number, default: 0 },
+    negative: { type: Number, default: 0 },
+    neutral:  { type: Number, default: 0 }
   }
-})
-
-function updateStudentKey (studentKey, studentDataKey, key) {
-  studentKey[key] = studentDataKey[key] || studentKey[key] || 0
 }
+
+studentSchema = mongoose.Schema(studentStructure)
+
+/* Private */
 
 function updateKeys (student, studentData, keyName) {
-  for (var key in student[keyName]) {
-    updateStudentKey(student[keyName], studentData[keyName], key)
+  for (var attribute in studentStructure[keyName]) {
+    student[keyName][attribute] = studentData[keyName][attribute] || student[keyName][attribute]
   }
-}
-
-studentSchema.methods.create = function (studentData) {
-  var student = new Student()
-
-  student.save(function (err) {
-    if (err) {
-      throw err
-    }
-  })
 }
 
 function updateLearningStyle (student, studentData) {
@@ -110,7 +104,13 @@ function addStudentData (student, studentData) {
 
 studentSchema.methods.create = function (studentData) {
   var student = new Student()
+  student.name =      studentData.name
+  student.email =     studentData.email
+  student.age =       studentData.age
+  student.gender =    studentData.gender
+
   addStudentData(student, studentData)
+
   student.save(function (err) {
     if (err) {
       throw err
@@ -128,42 +128,8 @@ studentSchema.methods.update = function (studentData) {
   })
 }
 
-function isSuccessfull (statement) {
-  return (statement.result.success && statement.result.completion) ? 1 : 0
-}
-
-function getLearningStyles (statement) {
-  var learningStyles = {}
-  statement.context.extensions.learningStyles.forEach( function (learningStyle) {
-    learningStyles[learningStyle] = isSuccessfull(statement)
-  })
-  return learningStyles
-}
-
-studentSchema.methods.updateLearningStyle = function (studentStatements) {
-  var student = this
-  var training = []
-
-  studentStatements.forEach(function (statement) {
-    training.push({
-      'input': {
-        'student': statement.actor.mbox
-      },
-      'output': getLearningStyles(statement)
-    })
-  })
-
-  var net = new brain.NeuralNetwork()
-  net.train(training)
-  var studentData = net.run({
-    'student': statement.actor.mbox
-  })
-  updateLearningStyle(student, studentData)
-  student.save(function (err) {
-    if (err) {
-      throw err
-    }
-  })
+studentSchema.methods.exists = function (student) {
+  return (student.length === 0)
 }
 
 module.exports = mongoose.model('Student', studentSchema)

@@ -11,7 +11,7 @@ var PlatformSchema = mongoose.Schema({
 
 PlatformSchema.methods.create = function(platformData) {
   var platform = new Platform()
-  platform.name        = platformData.name        
+  platform.name        = platformData.name
   platform.description = platformData.description
   platform.stars       = platformData.stars || 0
   platform.courses     = platformData.courses || []
