@@ -34,7 +34,7 @@ module.exports = {
 
   production: {
     'path': '/',
-    'views': '/dist'
+    'views': '/dist',
     'database': 'mongodb://heroku_5tw0dl6q:coercion3927@ds011873.mlab.com:11873/heroku_5tw0dl6q'
   },
   url: 'https://elaio.com/',
