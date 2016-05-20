@@ -6,14 +6,10 @@
   "license": "MIT",
   "main": "app.js",
   "engines": {
-    "node": "0.10.x",
-    "npm": "2.5.0"
+    "npm": "2.5.0",
+    "node": "4.1.1"
   },
   "scripts": {
-    "build": "webpack --config webpack.build.js --bail -p",
-    "dev": "node node_modules/.bin/webpack-dev-server --history-api-fallback --hot --inline --progress",
-    "test": "karma start",
-    "test:live": "karma start --auto-watch --no-single-run",
     "start": "node app.js"
   },
   "devDependencies": {
@@ -72,6 +68,7 @@
   },
   "dependencies": {
     "brain": "^0.7.0",
+    "node": "0.0.0",
     "passport-localapikey": "0.0.3",
     "tincanjs": "^0.41.1"
   }
