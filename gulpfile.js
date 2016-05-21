@@ -30,7 +30,7 @@ var paths = {
                 'app/elaio.js',
                 'app/assets'],
     FROM_BUILD_ASSETS: ['app/assets/**/'],
-    DEST_BUILD: 'dist/build',
+    DEST_BUILD: 'dist',
     ENTRY_POINT: __dirname + '/app/app.js'
 }
 
