@@ -1,5 +1,5 @@
 module.exports = {
-  environment: 'development',
+  environment: 'production',
 
   passport: {
     'facebook': {
