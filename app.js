@@ -20,7 +20,7 @@ var flash = require('connect-flash')
 var http = require('http')
 var server = http.createServer(app)
 
-var publicPath = path.resolve(__dirname, 'app')
+var publicPath = path.resolve(__dirname, environment.path)
 
 mongoose.connect(process.env.MONGOLAB_URI || configDB.url);
 
@@ -28,7 +28,7 @@ require('./backend/passport/main')(passport)
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
-app.use(express.static(path.join(__dirname, 'app')))
+app.use(express.static(path.join(__dirname, environment.path)))
 app.engine('html', require('ejs').renderFile)
 app.set('views', __dirname + environment.views)
 app.set('view options', {layout: false})
