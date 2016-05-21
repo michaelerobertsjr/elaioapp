@@ -1,5 +1,5 @@
 module.exports = {
-  environment: 'production',
+  environment: 'development',
 
   passport: {
     'facebook': {
@@ -27,12 +27,14 @@ module.exports = {
   },
   development: {
     'database': 'mongodb://localhost/elaiodb',
+    'publicPath': 'app',
     'path': '/app',
     'views': '/app',
     'port': 2000
   },
 
   production: {
+    'publicPath': 'dist',
     'path': '/dist',
     'views': '/dist',
     'database': 'mongodb://heroku_5tw0dl6q:p8e1d399nkee5cncisq91diu4@ds011873.mlab.com:11873/heroku_5tw0dl6q'
