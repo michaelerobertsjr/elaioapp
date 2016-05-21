@@ -1,0 +1,75 @@
+<nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+    <div class="container topnav">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand topnav" href="/"><span><img src="{{landing.logo}}" class="navbar--logo"/></span> elaio</a>
+        </div>
+        <form action="/login" method="post" class="navbar-form navbar-right" role="login">
+            <div class="form-group">
+                <input type="text" class="form-control" name="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name="password" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-default">Enter</button>
+        </form>
+    </div>
+</nav>
+<header class="intro-header">
+    <section class="container">
+        <section class="row">
+            <section class="col-lg-12">
+                <section class="intro-message">
+                    <img src="{{landing.logo}}" class="logo"/>
+                    <h1>elaio</h1>
+                    <h3>We all learn in different ways. Discover your students' mental model.</h3>
+                    <hr class="intro-divider">
+                    <section class="row signup-form">
+                        <section class="col-lg-12">
+                            <button type="button" ng-click="landing.showSignupForm()" class="btn btn-default">Try it FREE</button>
+                        </section>
+                        <section ng-show="landing.signup" class="col-md-6 col-md-offset-3">
+                            <form action="/signup" method="post" class="navbar-form" role="signup">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="username" placeholder="Username">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="email" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" name="password" placeholder="Password">
+                                </div>
+                                <button type="submit" class="btn btn-default">Sign up</button>
+                            </form>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+    </section>
+</header>
+<section class="main--view">
+    <section class="content-section-b">
+        <section class="container">
+            <section class="row">
+                <article class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Know your students</h2>
+                    <p class="lead">Every student has its own mental model. Every interaction with your system can help you to know how your students want to learn.</p>
+                </article>
+                <aside class="col-lg-5 col-sm-pull-6  col-sm-6">
+                    <div class="landing-logo-image">
+                        <i class="fa fa-graduation-cap img-responsive"></i>
+                    </div>                
+                </aside>
+            </section>
+        </section>
+    </section>
+</section>
+<footer-menu></footer-menu>

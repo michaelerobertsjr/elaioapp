@@ -31,7 +31,9 @@ var paths = {
                 'app/assets'],
     FROM_BUILD_ASSETS: ['app/assets/**/'],
     DEST_BUILD: 'dist',
-    ENTRY_POINT: __dirname + '/app/app.js'
+    ENTRY_POINT: __dirname + '/app/app.js',
+
+    TEMPLATES: '/**/**/*.html'
 }
 
 var assets = ['app/**/*.ttf',
@@ -111,6 +113,11 @@ gulp.task('build_assets', function() {
     .pipe(gulp.dest(paths.DEST_BUILD + '/assets'))
 })
 
+gulp.task("build_templates", function() {
+  gulp.src("app/" + paths.TEMPLATES)
+  .pipe(gulp.dest(paths.DEST_BUILD));
+})
+
 gulp.task('watch', function() {
     gulp.watch(paths.WATCH);
 })
@@ -125,7 +132,7 @@ gulp.task("run", function() {
   server.run(["app.js"])
 })
 
-gulp.task('build', ['build_files', 'build_assets'])
+gulp.task('build', ['build_files', 'build_assets', 'build_templates'])
 
 gulp.task('default', [
                       'scripts',

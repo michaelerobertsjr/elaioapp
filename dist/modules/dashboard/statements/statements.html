@@ -1,0 +1,24 @@
+<section id="page-content-wrapper">
+    <section class="container-fluid">
+	    <section class="row">
+	        <section class="col-lg-12">
+	            <button class="btn btn-default" ng-click="dashboard.toggleSidebar()" id="menu-toggle"><i class="fa fa-bars"></i></button>  <span class="page--title">Statements
+	        </section>
+	    </section>
+	    <hr class="separator--primary">
+	   	<section class="row">
+	      <section class="col-lg-12">
+				  <section class="row">
+				    <div class="col-md-6">
+              <input type="file" name="file" id="file" class="inputfile" upload-file="fileContent"/>
+              <label for="file" class="btn btn-primary">Choose a file</label>
+    				  <button ng-click="statements.uploadFile()" class="btn btn-primary">Save Statements</button>
+				    </div>
+			    </section>
+	      </section>
+	      <section class="col-lg-12">
+	        <pre>{{statements.fileContent}}</pre>
+	      </section>
+	    </section>
+	</section>
+</section>
