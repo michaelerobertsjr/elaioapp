@@ -67,8 +67,8 @@
     "vinyl-source-stream": "1.1.0"
   },
   "dependencies": {
+    "angular-ui-router": "^0.3.0",
     "brain": "0.7.0",
-    "node": "0.0.0",
     "passport-localapikey": "0.0.3",
     "tincanjs": "0.41.1"
   }
