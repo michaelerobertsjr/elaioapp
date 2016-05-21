@@ -22,7 +22,8 @@ var server = http.createServer(app)
 
 var publicPath = path.resolve(__dirname, 'app')
 
-mongoose.connect(configDB.url)
+mongoose.connect(process.env.MONGOLAB_URI || configDB.url);
+
 require('./backend/passport/main')(passport)
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({extended: true}))
