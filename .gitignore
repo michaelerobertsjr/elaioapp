@@ -5,3 +5,9 @@ public
 npm-debug.log
 mappe.json
 /**/mappe.json
+dist
+backend/config/variables
+app/scripts.js
+app/styles.css
+app/elaio.js
+app/elaio.css

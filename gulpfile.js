@@ -134,13 +134,4 @@ gulp.task("run", function() {
 
 gulp.task('build', ['build_files', 'build_assets', 'build_templates'])
 
-gulp.task('default', [
-                      'scripts',
-                      'styles',
-                      'assets_scripts',
-                      'assets_styles',
-                      'assets_media',
-                      'build',
-                      'run',
-                      'views',
-                      'watch'])
+gulp.task('default', ['scripts', 'styles', 'assets_scripts', 'assets_styles', 'assets_media', 'build', 'run', 'views', 'watch'])
