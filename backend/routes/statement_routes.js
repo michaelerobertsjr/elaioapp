@@ -25,7 +25,12 @@ module.exports = function (router, app, passport, server, auth) {
   router.post('/api/statement/save',
     passport.authenticate('localapikey', { failureRedirect: '/api/unauthorized' }),
     function (request, response) {
-      Statement.create(request.body.statement)
+      var statement;
+
+      statement = request.body.statement;
+      statement.authority = request.user.email;
+      
+      Statement.create(statement);
       response.send(JSON.stringify({message: 'Statement Saved'}), {
         'Content-Type': 'application/json'
       }, 200);

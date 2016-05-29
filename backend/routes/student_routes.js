@@ -42,10 +42,9 @@ module.exports = function (router, app, passport, server, auth) {
   router.get('/api/student/intelligencetype',
     passport.authenticate('localapikey', { failureRedirect: '/api/unauthorized' }),
     function (request, response) {
-      var intelligenceType, results;
+      var intelligenceType, results, query;
 
-      var query = Statement.find({'actor.mbox': 'mailto:' + request.query.mbox})
-
+      query = Statement.find({'actor.mbox': 'mailto:' + request.query.mbox})
       query.exec(function(err, statements) {
         if (!err) {
           results = StudentOperations.getIntelligenceType(statements)
@@ -63,7 +62,6 @@ module.exports = function (router, app, passport, server, auth) {
         }
       })
     })
-
 
   router.get('/api/student/:mbox/:query', auth, function (request, response) {})
 

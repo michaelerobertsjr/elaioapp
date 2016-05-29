@@ -50,8 +50,8 @@ function trainIntelligenceType(training) {
   net.train(training)
 
   intelligenceType.forEach(function (type) {
-    assert = {}
-    assert[type] = 1
+    assert =        {}
+    assert[type] =  1
     results[type] = net.run(assert)
   })
 
@@ -61,11 +61,7 @@ function trainIntelligenceType(training) {
 var StudentOperations = {
 
   getIntelligenceType: function(statements) {
-    if (statements) {
-      return calcIntelligenceType(statements)
-    }
-
-    return false
+    return statements ? calcIntelligenceType(statements) : false
   }
 }
 
