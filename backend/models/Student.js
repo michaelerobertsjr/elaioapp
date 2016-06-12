@@ -36,6 +36,7 @@ studentStructure = {
     effective:    { type: Number, default: 0 },
     realistic:    { type: Number, default: 0 }
   },
+
   intelligenceType: { // Howard Gardner
     linguistic:          { type: Number, default: 0 },
     logicalMathematical: { type: Number, default: 0 },
@@ -53,9 +54,9 @@ studentStructure = {
   },
   academicData: {
     achievements: { type: Number, default: 0 },
-    materials: { type: Number, default: 0 },
-    activities: { type: Number, default: 0 },
-    time: { type: Number, default: 0 }
+    materials:    { type: Number, default: 0 },
+    activities:   { type: Number, default: 0 },
+    time:         { type: Number, default: 0 }
   },
   mood: {
     positive: { type: Number, default: 0 },

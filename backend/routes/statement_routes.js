@@ -3,7 +3,6 @@ var User = require('../models/User')
 
 module.exports = function (router, app, passport, server, auth) {
   router.get('/api/statements', auth, function (request, response) {
-    console.log('REQUEST:', request)
     var query = Statement.find()
     query.exec(function (err, statements) {
       if (!err) {
@@ -29,7 +28,7 @@ module.exports = function (router, app, passport, server, auth) {
 
       statement = request.body.statement;
       statement.authority = request.user.email;
-      
+
       Statement.create(statement);
       response.send(JSON.stringify({message: 'Statement Saved'}), {
         'Content-Type': 'application/json'

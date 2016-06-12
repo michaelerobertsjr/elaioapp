@@ -1,7 +1,9 @@
+const INTERACTION_TYPES = require('../globals/interactionTypes');
+const OBJECT_TYPES =      require('../globals/objectTypes');
+
 var mongoose = require('mongoose')
-var objectTypeEnum = { type: String, enum: ['Activity', 'Agent', 'StatementRef', 'SubStatement', 'Group'] }
-var interactionTypeEnum = {type: String, enum: ['choice', 'sequencing', 'likert', 'matching', 'performance', 'true-false',
-                                                'fill-in', 'long-fill-in', 'numeric']}
+var objectTypeEnum =      { type: String, enum: OBJECT_TYPES}
+var interactionTypeEnum = {type: String, enum: INTERACTION_TYPES}
 
 var StatementSchema = mongoose.Schema({
   actor: {
@@ -13,8 +15,7 @@ var StatementSchema = mongoose.Schema({
     display: { type: Object, required: true},
   },
   result: {
-    extensions:  { type: Object, required: false}, /* {"http://example.com/profiles/meetings/resultextensions/minuteslocation": "X:\\meetings\\minutes\\examplemeeting.one"} */
-    success:     { type: Boolean, required: false, default: true},
+    extensions:  { type: Object, required: false},
     scaledScore: { type: Number, required: false},
     rawScore:    { type: Number, required: false},
     minScore:    { type: Number, required: false},
@@ -31,11 +32,11 @@ var StatementSchema = mongoose.Schema({
   object: {
     id:         { type: String, required: false},
     definition: {
-      extensions:  { type: Object, required: false}, /* {"http://example.com/profiles/meetings/activitydefinitionextensions/room": {"name": "Kilby", "id" : "http://example.com/rooms/342"}} */
+      extensions:  { type: Object, required: false},
       name:        { type: Object, required: false},
-      description: { type: Object, required: false}, /* {"en-GB": "An example meeting that happened on a specific occasion with certain people present.","en-US": "An example meeting that happened on a specific occasion with certain people present."} */
-      type:        { type: String, required: false}, /* "http://adlnet.gov/expapi/activities/meeting" */
-      moreInfo:    { type: String, required: false} /* "http://virtualmeeting.example.com/345256" */
+      description: { type: Object, required: false},
+      type:        { type: String, required: false},
+      moreInfo:    { type: String, required: false}
     },
     objectType:      { type: objectTypeEnum, required: false},
     interactionType: { type: interactionTypeEnum, required: false}

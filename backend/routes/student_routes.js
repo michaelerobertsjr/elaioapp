@@ -60,8 +60,56 @@ module.exports = function (router, app, passport, server, auth) {
         } else {
           return err
         }
-      })
     })
+  })
+
+  router.get('/api/student/learningstyles',
+    passport.authenticate('localapikey', { failureRedirect: '/api/unauthorized' }),
+    function (request, response) {
+      var intelligenceType, results, query;
+
+      query = Statement.find({'actor.mbox': 'mailto:' + request.query.mbox})
+      query.exec(function(err, statements) {
+        if (!err) {
+          results = StudentOperations.getLearningStyles(statements)
+          if (results) {
+            response.send({learningStyles: results}, {
+              'Content-Type': 'application/json'
+            }, 200);
+          } else {
+            response.send({message: 'Error'}, {
+              'Content-Type': 'application/json'
+            }, 400);
+          }
+        } else {
+          return err
+        }
+    })
+  })
+
+  router.get('/api/student/interactiontype',
+    passport.authenticate('localapikey', { failureRedirect: '/api/unauthorized' }),
+    function (request, response) {
+      var intelligenceType, results, query;
+
+      query = Statement.find({'actor.mbox': 'mailto:' + request.query.mbox})
+      query.exec(function(err, statements) {
+        if (!err) {
+          results = StudentOperations.getInteractionType(statements)
+          if (results) {
+            response.send({interactionType: results}, {
+              'Content-Type': 'application/json'
+            }, 200);
+          } else {
+            response.send({message: 'Error'}, {
+              'Content-Type': 'application/json'
+            }, 400);
+          }
+        } else {
+          return err
+        }
+    })
+  })
 
   router.get('/api/student/:mbox/:query', auth, function (request, response) {})
 
