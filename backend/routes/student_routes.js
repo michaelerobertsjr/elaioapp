@@ -42,9 +42,16 @@ module.exports = function (router, app, passport, server, auth) {
   router.get('/api/student/intelligencetype',
     passport.authenticate('localapikey', { failureRedirect: '/api/unauthorized' }),
     function (request, response) {
+<<<<<<< HEAD
       var intelligenceType, results, query;
 
       query = Statement.find({'actor.mbox': 'mailto:' + request.query.mbox})
+=======
+      var intelligenceType, results;
+
+      var query = Statement.find({'actor.mbox': 'mailto:' + request.query.mbox})
+
+>>>>>>> heroku
       query.exec(function(err, statements) {
         if (!err) {
           results = StudentOperations.getIntelligenceType(statements)

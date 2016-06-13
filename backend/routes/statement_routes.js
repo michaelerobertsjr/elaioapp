@@ -30,6 +30,7 @@ module.exports = function (router, app, passport, server, auth) {
       statement.authority = request.user.email;
 
       Statement.create(statement);
+
       response.send(JSON.stringify({message: 'Statement Saved'}), {
         'Content-Type': 'application/json'
       }, 200);
