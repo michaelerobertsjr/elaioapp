@@ -27,26 +27,17 @@ module.exports = {
   },
   development: {
     'database': 'mongodb://localhost/elaiodb',
-<<<<<<< HEAD
     'publicPath': 'app',
-=======
->>>>>>> heroku
     'path': '/app',
     'views': '/app',
     'port': 2000
   },
 
   production: {
-<<<<<<< HEAD
     'publicPath': 'dist',
     'path': '/dist',
     'views': '/dist',
     'database': 'mongodb://heroku_5tw0dl6q:p8e1d399nkee5cncisq91diu4@ds011873.mlab.com:11873/heroku_5tw0dl6q'
-=======
-    'path': '/',
-    'views': '/dist'
-    'database': 'mongodb://heroku_5tw0dl6q:coercion3927@ds011873.mlab.com:11873/heroku_5tw0dl6q'
->>>>>>> heroku
   },
   url: 'https://elaio.com/',
   secret: 'elaio'

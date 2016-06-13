@@ -28,10 +28,28 @@
               chart-datasets="students.intelligenceTypeChart.datasets">
        </chart>
 
-       <chart ng-repeat="learningStyle in students.learningStyleCharts"chart-type="radar"
-              chart-id="{{learningStyle}}"
-              chart-labels="{{learningStyle.labels}}"
-              chart-datasets="{{learningStyle.dataSets}}">
+       <chart chart-type="radar"
+              chart-id="ActiveExperimentation"
+              chart-labels="students.learningStyleCharts.ActiveExperimentation.labels"
+              chart-datasets="students.learningStyleCharts.ActiveExperimentation.datasets">
+       </chart>
+
+       <chart chart-type="radar"
+              chart-id="AbstractConceptualisation"
+              chart-labels="students.learningStyleCharts.AbstractConceptualisation.labels"
+              chart-datasets="students.learningStyleCharts.AbstractConceptualisation.datasets">
+       </chart>
+
+       <chart chart-type="radar"
+              chart-id="ReflexiveObservation"
+              chart-labels="students.learningStyleCharts.ReflexiveObservation.labels"
+              chart-datasets="students.learningStyleCharts.ReflexiveObservation.datasets">
+       </chart>
+
+       <chart chart-type="radar"
+              chart-id="ConcreteExperience"
+              chart-labels="students.learningStyleCharts.ConcreteExperience.labels"
+              chart-datasets="students.learningStyleCharts.ConcreteExperience.datasets">
        </chart>
   	</section>
   </section>
