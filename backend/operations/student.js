@@ -120,7 +120,6 @@ function trainNeuralNetwork(training, values) {
    })
 
  } catch (err) {
-   console.log(err)
    results = {}
  }
 

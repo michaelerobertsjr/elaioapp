@@ -27,6 +27,12 @@
               chart-labels="students.intelligenceTypeChart.labels"
               chart-datasets="students.intelligenceTypeChart.datasets">
        </chart>
+
+       <chart ng-repeat="learningStyle in students.learningStyleCharts"chart-type="radar"
+              chart-id="{{learningStyle}}"
+              chart-labels="{{learningStyle.labels}}"
+              chart-datasets="{{learningStyle.dataSets}}">
+       </chart>
   	</section>
   </section>
 </section>

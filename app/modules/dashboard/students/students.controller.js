@@ -9,11 +9,16 @@ export default class StudentsController extends DashboardController {
     studentsService = StudentsService
     studentsFactory = StudentsFactory
     students.intelligenceTypeChart = {}
+    students.learningStyleChart =    {}
+    students.interactionTypeChart =  {}
   }
 
   findStudent() {
-    studentsService.getIntelligenceType(students.email).then(function (results) {
+    studentsService.getStudentInformation(students.email, 'intelligenceType').then(function (results) {
       students.intelligenceTypeChart = studentsFactory.getIntelligenceTypeDataSet(results)
+    })
+    studentsService.getStudentInformation(students.email, 'learningStyles').then(function (results) {
+      students.learningStyleCharts = studentsFactory.getLearningStyleDataSet(results)
     })
   }
 }

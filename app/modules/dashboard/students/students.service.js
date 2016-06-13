@@ -11,10 +11,12 @@ export default class StudentsService {
     authService = AuthService
 
     endpoint = {
-      'statements': 'api/students',
-      'saveStudent': 'api/student/save',
-      'findStudent': 'api/student/get',
-      'intelligenceType' : 'api/student/intelligencetype'
+      statements:       'api/students',
+      saveStudent:      'api/student/save',
+      findStudent:      'api/student/get',
+      intelligenceType: 'api/student/intelligencetype',
+      learningStyles:   'api/student/learningStyles',
+      interactionType:  'api/student/interactionType'
     }
 
     params = {
@@ -40,6 +42,18 @@ export default class StudentsService {
      params.apikey = currentUser.apikey
      params.mbox = email
      HTTP.get(endpoint.intelligenceType, {params: params}).then(function (result) {
+       deferred.resolve(result.data)
+     })
+   })
+   return deferred.promise
+ }
+
+ getStudentInformation(email, target) {
+   let deferred = q.defer()
+   authService.getCurrentUser().then(function (currentUser) {
+     params.apikey = currentUser.apikey
+     params.mbox = email
+     HTTP.get(endpoint[target], {params: params}).then(function (result) {
        deferred.resolve(result.data)
      })
    })

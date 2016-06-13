@@ -30,7 +30,9 @@ var paths = {
                 'app/elaio.js',
                 'app/assets'],
     FROM_BUILD_ASSETS: ['app/assets/**/'],
+    FROM_GLOBALS: ['app/globals/*.js'],
     DEST_BUILD: 'dist',
+    DEST_GLOBALS: 'dist/globals',
     ENTRY_POINT: __dirname + '/app/app.js',
 
     TEMPLATES: '/**/**/*.html'
@@ -78,6 +80,11 @@ gulp.task('assets_scripts', function () {
 gulp.task('assets_media', function () {
     return gulp.src(assets)
     .pipe(gulp.dest(paths.DEST))
+})
+
+gulp.task('globals', function () {
+    return gulp.src(paths.FROM_GLOBALS)
+    .pipe(gulp.dest(paths.DEST_GLOBALS))
 })
 
 gulp.task('views', function () {
@@ -134,4 +141,4 @@ gulp.task("run", function() {
 
 gulp.task('build', ['build_files', 'build_assets', 'build_templates'])
 
-gulp.task('default', ['scripts', 'styles', 'assets_scripts', 'assets_styles', 'assets_media', 'build', 'run', 'views', 'watch'])
+gulp.task('default', ['scripts', 'styles', 'assets_scripts', 'assets_styles', 'assets_media', 'globals', 'build', 'run', 'views', 'watch'])
