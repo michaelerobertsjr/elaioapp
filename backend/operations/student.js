@@ -1,12 +1,16 @@
 /* Student Operations */
 
-var Statement =         require('../models/Statement')
-var Brain =             require('brain')
+var
+  Statement =         require('../models/Statement'),
+  Brain =             require('brain');
 
-const INTELLIGENCE_TYPES = require('../globals/intelligenceTypes')
-const INTERACTION_TYPES =  require('../globals/interactionTypes')
-const LEARNING_STYLES =    require('../globals/learningStyles')
-const VERBS =              require('../globals/verbs')
+const
+  INTELLIGENCE_TYPES = require('../globals/intelligenceTypes'),
+  INTERACTION_TYPES =  require('../globals/interactionTypes'),
+  LEARNING_STYLES =    require('../globals/learningStyles'),
+  VERBS =              require('../globals/verbs'),
+  ASSERT_VALUE =       1
+;
 
 function getIntelligenceType(statements) {
   var training, results, input, type;
@@ -18,16 +22,10 @@ function getIntelligenceType(statements) {
       input = {}
 
       for (type in INTELLIGENCE_TYPES) {
-        input[type] = Number(!!statement.context.extensions[INTELLIGENCE_TYPES[type].id]);
+        input[type] = getBooleanIntellygenceTypeInput(statement, type);
       }
 
-      training.push({
-        input:  input,
-        output: {
-          success:    Number(statement.result.success),
-          completion: Number(statement.result.completion)
-        }
-      })
+      training.push(getTrainingValue(statement, input));
     }
   })
 
@@ -43,17 +41,11 @@ function getInteractionType(statements) {
     if (hasInteractionType(statement)) {
       input = {}
 
-      INTERACTION_TYPES.forEach(function (type) {
-        input[type] = Number(!!statement.definition.interactionType[type]);
+      INTERACTION_TYPES.forEach(function (statement, type) {
+        input[type] = getBooleanInteractionTypeInput(statement, type);
       })
 
-      training.push({
-        input:  input,
-        output: {
-          success:    Number(statement.result.success),
-          completion: Number(statement.result.completion)
-        }
-      })
+      training.push(getTrainingValue(statement, input));
     }
   })
 
@@ -75,16 +67,10 @@ function getLearningStyles(statements) {
         trainings[group] = []
         input = {}
         for (style in LEARNING_STYLES[group]) {
-          input[style] = Number(!!statement.context.extensions[LEARNING_STYLES[group][style].id]);
+          input[style] = getBooleanLearningStyleInput(statement, group, style)
         }
 
-        trainings[group].push({
-          input:  input,
-          output: {
-            success:    Number(statement.result.success),
-            completion: Number(statement.result.completion)
-          }
-        })
+        trainings[group].push(getTrainingValue(statement, input));
       })
     }
   })
@@ -94,36 +80,6 @@ function getLearningStyles(statements) {
   })
 
   return results;
-}
-
-function hasExtensions(statement) {
-  return (statement && statement.context && statement.context.extensions)
-}
-
-function hasInteractionType(statement) {
-  return (statement && statement.definition && statement.definition.interactionType)
-}
-
-function trainNeuralNetwork(training, values) {
-  var net, results, assert
-
-  results =  {}
-  neuralNetwork = new Brain.NeuralNetwork()
-
- try {
-   neuralNetwork.train(training)
-
-   values.forEach(function (value) {
-     assert =        {}
-     assert[value] =  1
-     results[value] = neuralNetwork.run(assert)
-   })
-
- } catch (err) {
-   results = {}
- }
-
-  return results
 }
 
 var StudentOperations = {
@@ -139,3 +95,57 @@ var StudentOperations = {
 }
 
 module.exports = StudentOperations
+
+/* Private */
+
+function hasExtensions(statement) {
+  return (statement && statement.context && statement.context.extensions)
+}
+
+function hasInteractionType(statement) {
+  return (statement && statement.definition && statement.definition.interactionType)
+}
+
+function getBooleanIntellygenceTypeInput(statement, type) {
+  return Number(!!statement.context.extensions[INTELLIGENCE_TYPES[type].id])
+}
+
+function getBooleanInteractionTypeInput(statement, type) {
+  return Number(!!statement.definition.interactionType[type])
+}
+
+function getBooleanLearningStyleInput(statement, group, style) {
+  return Number(!!statement.context.extensions[LEARNING_STYLES[group][style].id])
+}
+
+function getTrainingValue(statement, input) {
+ return {
+   input:  input,
+   output: {
+     success:    Number(statement.result.success),
+     completion: Number(statement.result.completion)
+   }
+ }
+}
+
+function trainNeuralNetwork(training, values) {
+  var net, results, assert
+
+  results = {}
+  neuralNetwork = new Brain.NeuralNetwork()
+
+ try {
+   neuralNetwork.train(training)
+
+   values.forEach(function (value) {
+     assert =        {}
+     assert[value] =  ASSERT_VALUE
+     results[value] = neuralNetwork.run(assert)
+   })
+
+ } catch (error) {
+   results = {reason: error}
+ }
+
+  return results
+}

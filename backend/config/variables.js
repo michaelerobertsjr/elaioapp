@@ -3,9 +3,9 @@ module.exports = {
 
   passport: {
     'facebook': {
-      'FACEBOOK_APP_ID': '353460018186588',
+      'FACEBOOK_APP_ID':     '353460018186588',
       'FACEBOOK_APP_SECRET': '30b7175fdb7bbb445cd3cd4b198381c9',
-      'CALLBACK_URL': 'http://playlingua.herokuapp.com/auth/facebook/callback'
+      'CALLBACK_URL':        'http://playlingua.herokuapp.com/auth/facebook/callback'
     },
     'google': {
       'GOOGLE_CONSUMER_KEY': '864648951920-n80hr3gnob47kqu2cmada0cinrm7eair',
